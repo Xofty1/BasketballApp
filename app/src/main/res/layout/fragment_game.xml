@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.GameFragment">
+    android:orientation="vertical"
+    tools:context=".presentation.main.fragment.GameFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,5 +34,22 @@
         android:id="@+id/recyclerViewGame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="96dp" /> <!-- Добавляем отступ для Spinner -->
-</FrameLayout>
+        android:layout_marginTop="96dp" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Авторизируйтесь, чтобы увидеть игры"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Авторизоваться"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+</LinearLayout>

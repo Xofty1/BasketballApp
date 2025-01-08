@@ -1,19 +1,20 @@
-package com.basketballapp.presentation;
+package com.basketballapp.presentation.main;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.basketballapp.R;
+import com.basketballapp.presentation.main.fragment.GameFragment;
+import com.basketballapp.presentation.main.fragment.ProfileFragment;
+import com.basketballapp.presentation.main.fragment.TeamFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MatchListActivity";
-    Fragment selectedFragment = new GameFragment();
+    Fragment selectedFragment = new TeamFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Слушатель для выбора элементов в меню
         bottomNavigationView.setOnItemSelectedListener(item -> {
-
-            if (item.getItemId() == R.id.nav_home && selectedFragment.getClass() != GameFragment.class) {
+            int id = item.getItemId();
+            if (id == R.id.nav_home && selectedFragment.getClass() != GameFragment.class) {
                 selectedFragment = new GameFragment();
-            } else if (item.getItemId() == R.id.nav_teams && selectedFragment.getClass() != TeamFragment.class) {
+            } else if (id == R.id.nav_teams && selectedFragment.getClass() != TeamFragment.class) {
                 selectedFragment = new TeamFragment();
+            } else if (id == R.id.nav_profile && selectedFragment.getClass() != ProfileFragment.class) {
+                selectedFragment = new ProfileFragment();
             }
 
             if (selectedFragment != null) {
@@ -44,14 +47,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-
-        fragmentTransaction.addToBackStack(null);
-
-        fragmentTransaction.commit();
+    public void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
     }
 }

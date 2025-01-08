@@ -1,4 +1,4 @@
-package com.basketballapp.presentation;
+package com.basketballapp.presentation.main.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

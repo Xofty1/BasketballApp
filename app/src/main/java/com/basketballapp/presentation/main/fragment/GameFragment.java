@@ -1,5 +1,6 @@
-package com.basketballapp.presentation;
+package com.basketballapp.presentation.main.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,10 @@ import com.basketballapp.domain.model.Game;
 import com.basketballapp.domain.repository.GameRepository;
 import com.basketballapp.domain.repository.callback.RepositoryCallback;
 import com.basketballapp.presentation.adapter.GameAdapter;
+import com.basketballapp.presentation.auth.AuthActivity;
+import com.basketballapp.presentation.main.dialog.AuthDialogFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,11 +48,29 @@ public class GameFragment extends Fragment {
         binding.recyclerViewGame.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new GameAdapter(gameList);
         binding.recyclerViewGame.setAdapter(adapter);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        if (user == null) {
+            binding.recyclerViewGame.setVisibility(View.GONE);
+            AuthDialogFragment dialogFragment = new AuthDialogFragment();
+            dialogFragment.show(requireActivity().getSupportFragmentManager(), "AuthDialog");
+            binding.tvStatus.setVisibility(View.VISIBLE);
+            binding.btnLogin.setVisibility(View.VISIBLE);
+            binding.btnLogin.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), AuthActivity.class);
+                startActivity(intent);
+                requireActivity().finish();
+            });
+        } else {
+            binding.tvStatus.setVisibility(View.GONE);
+            binding.recyclerViewGame.setVisibility(View.VISIBLE);
+            gameRepository = new GameRepository();
+            fetchGames(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH) + 1);
+        }
 
-        gameRepository = new GameRepository();
 
         setupSpinners();
-        fetchGames(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH) + 1);
+
 
         return binding.getRoot();
     }
