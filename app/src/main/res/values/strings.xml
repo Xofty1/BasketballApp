@@ -2,4 +2,6 @@
     <string name="app_name">BasketballApp</string>
     <string name="about_creator">Студент группы ИКБО-03-22 Ясанкин Александр Геннадьевич</string>
     <string name="about_app">На вкладке Команды</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

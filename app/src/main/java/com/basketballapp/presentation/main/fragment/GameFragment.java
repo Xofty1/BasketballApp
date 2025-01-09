@@ -46,7 +46,7 @@ public class GameFragment extends Fragment {
         binding = FragmentGameBinding.inflate(inflater);
 
         binding.recyclerViewGame.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter = new GameAdapter(gameList);
+        adapter = new GameAdapter(gameList, getParentFragmentManager());
         binding.recyclerViewGame.setAdapter(adapter);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();

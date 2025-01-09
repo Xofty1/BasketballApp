@@ -53,11 +53,13 @@ public class ProfileFragment extends Fragment {
         binding.btnAboutCreator.setOnClickListener(v -> {
             // Переход к информации о создателе
             showAboutCreator();
+
         });
 
 
         return binding.getRoot();
     }
+
 
     @Override
     public void onDestroyView() {

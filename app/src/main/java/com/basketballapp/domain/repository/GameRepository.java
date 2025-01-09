@@ -33,7 +33,7 @@ public class GameRepository {
 
     public void fetchTeams(int year, boolean isE, RepositoryCallback<Team> callback) {
         // Вызов WebScraper для получения данных
-        webScraper.fetchTeams(year, isE, new WebScraper.WebScraperCallback<Team>() {
+        webScraper.fetchTeams(year, isE, new WebScraper.WebScraperCallback<>() {
             @Override
             public void onResult(List<Team> games) {
                 // Успешно загруженные данные

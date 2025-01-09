@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Date"
+        android:textSize="16sp" />
+
+
+    <ImageView
+        android:id="@+id/ivTeamLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/tvRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Team"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvCoach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:text="Score"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvExecutive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:text="Score"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/tvArena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Away Team"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvAttendance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Away Team"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvPointsPerGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:text="Score"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvOpponentPointsPerGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:text="Score"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvSrs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:text="Score"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvPace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:text="Score"
+        android:textSize="20sp" />
+
+</LinearLayout>

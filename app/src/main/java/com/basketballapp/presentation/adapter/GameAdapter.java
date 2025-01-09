@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.basketballapp.R;
 import com.basketballapp.domain.model.Game;
+import com.basketballapp.presentation.main.fragment.GameStatsFragment;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -19,9 +21,11 @@ import java.util.List;
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder> {
 
     private final List<Game> gameList;
+    private final FragmentManager fragmentManager;
 
-    public GameAdapter(List<Game> gameList) {
+    public GameAdapter(List<Game> gameList, FragmentManager fragmentManager) {
         this.gameList = gameList;
+        this.fragmentManager = fragmentManager;
     }
 
     @NonNull
@@ -49,6 +53,14 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         Glide.with(holder.itemView.getContext())
                 .load(game.getAwayTeamImage())
                 .into(holder.ivAwayTeamLogo);
+        holder.itemView.setOnClickListener(v -> {
+            GameStatsFragment gameStatsFragment = GameStatsFragment.newInstance(game);
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, gameStatsFragment) // R.id.fragment_container — это контейнер в activity
+                    .addToBackStack(null)
+                    .commit();
+        });
     }
 
     @Override

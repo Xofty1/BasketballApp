@@ -7,3 +7,4 @@ public interface RepositoryCallback<T> {
 
     void onFailure(String errorMessage);
 }
+

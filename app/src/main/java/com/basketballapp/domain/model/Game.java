@@ -1,9 +1,10 @@
 package com.basketballapp.domain.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Game {
+
+public class Game implements Parcelable {
     private String date;
     private String homeTeam;
     private String awayTeam;
@@ -11,16 +12,27 @@ public class Game {
     private String homeTeamImage;
     private String awayTeamImage;
 
+    private String gameStartTime;
+    private String attendance;
+    private String gameDuration;
+    private String arenaName;
 
-    public Game(String date, String homeTeam, String awayTeam, String score, String homeTeamImage, String awayTeamImage) {
+    // Конструктор
+    public Game(String date, String homeTeam, String awayTeam, String score, String homeTeamImage, String awayTeamImage,
+                String gameStartTime, String attendance, String gameDuration, String arenaName) {
         this.date = date;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.score = score;
         this.homeTeamImage = homeTeamImage;
         this.awayTeamImage = awayTeamImage;
+        this.gameStartTime = gameStartTime;
+        this.attendance = attendance;
+        this.gameDuration = gameDuration;
+        this.arenaName = arenaName;
     }
 
+    // Геттеры и сеттеры
     public String getDate() {
         return date;
     }
@@ -37,48 +49,73 @@ public class Game {
         return score;
     }
 
-    @Override
-    public String toString() {
-        return date + ": " + homeTeam + " vs " + awayTeam + " (" + score + ")";
-    }
-
-    public Integer getYear() {
-        String[] parts = date.split(", ");
-
-        return Integer.valueOf(parts[2]);
-    }
-
-    public Integer getMonth() {
-        // Мапа для преобразования названия месяца в номер месяца
-        Map<String, Integer> monthMap = new HashMap<>();
-        monthMap.put("January", 1);
-        monthMap.put("February", 2);
-        monthMap.put("March", 3);
-        monthMap.put("April", 4);
-        monthMap.put("May", 5);
-        monthMap.put("June", 6);
-        monthMap.put("July", 7);
-        monthMap.put("August", 8);
-        monthMap.put("September", 9);
-        monthMap.put("October", 10);
-        monthMap.put("November", 11);
-        monthMap.put("December", 12);
-
-        // Разделяем строку на части по запятой и пробелу
-        String[] parts = date.split(", ");
-
-        // Извлекаем месяц
-        String monthName = parts[1].split(" ")[0];  // May
-
-        // Возвращаем номер месяца из мапы
-        return monthMap.getOrDefault(monthName, -1);  // -1, если месяц не найден
+    public String getHomeTeamImage() {
+        return homeTeamImage;
     }
 
     public String getAwayTeamImage() {
         return awayTeamImage;
     }
 
-    public String getHomeTeamImage() {
-        return homeTeamImage;
+    public String getGameStartTime() {
+        return gameStartTime;
     }
+
+    public String getAttendance() {
+        return attendance;
+    }
+
+    public String getGameDuration() {
+        return gameDuration;
+    }
+
+    public String getArenaName() {
+        return arenaName;
+    }
+
+    // Реализация Parcelable
+    protected Game(Parcel in) {
+        date = in.readString();
+        homeTeam = in.readString();
+        awayTeam = in.readString();
+        score = in.readString();
+        homeTeamImage = in.readString();
+        awayTeamImage = in.readString();
+        gameStartTime = in.readString();
+        attendance = in.readString();
+        gameDuration = in.readString();
+        arenaName = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(date);
+        dest.writeString(homeTeam);
+        dest.writeString(awayTeam);
+        dest.writeString(score);
+        dest.writeString(homeTeamImage);
+        dest.writeString(awayTeamImage);
+
+        dest.writeString(gameStartTime);
+        dest.writeString(attendance);
+        dest.writeString(gameDuration);
+        dest.writeString(arenaName);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Game> CREATOR = new Creator<>() {
+        @Override
+        public Game createFromParcel(Parcel in) {
+            return new Game(in);
+        }
+
+        @Override
+        public Game[] newArray(int size) {
+            return new Game[size];
+        }
+    };
 }

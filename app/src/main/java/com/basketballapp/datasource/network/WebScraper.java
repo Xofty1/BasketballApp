@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.basketballapp.domain.model.Game;
 import com.basketballapp.domain.model.Team;
+import com.basketballapp.domain.model.TeamStats;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -31,6 +32,12 @@ public class WebScraper {
         void onError(String errorMessage);
     }
 
+    public interface TeamStatsCallback<T> {
+        void onResult(T stat);
+
+        void onError(String errorMessage);
+    }
+
     public void fetchGames(int year, int month, WebScraperCallback callback) {
         Log.d("TAG52", "start FETCH GAMES");
         executor.execute(() -> {
@@ -49,6 +56,11 @@ public class WebScraper {
                         Log.d("TAG52", "parsing");
                         // Извлекаем данные из строк таблицы
                         String date = row.select("th[data-stat=date_game]").text();
+                        String gameStartTime = row.select("td[data-stat=game_start_time]").text();
+                        String attendance = row.select("td[data-stat=attendance]").text();
+                        String gameDuration = row.select("td[data-stat=game_duration]").text();
+                        String arenaName = row.select("td[data-stat=arena_name]").text();
+                        Log.d("TAG53", arenaName);
                         String homeTeam = row.select("td[data-stat=home_team_name]").text();
                         String awayTeam = row.select("td[data-stat=visitor_team_name]").text();
                         String score = row.select("td[data-stat=home_pts]").text() + " - " +
@@ -57,7 +69,7 @@ public class WebScraper {
                         // Получаем изображения команд
                         String homeTeamImage = "https://cdn.ssref.net/req/202412261/tlogo/bbr/" + getTeamCode(homeTeam) + ".png";
                         String awayTeamImage = "https://cdn.ssref.net/req/202412261/tlogo/bbr/" + getTeamCode(awayTeam) + ".png";
-                        games.add(new Game(date, homeTeam, awayTeam, score, homeTeamImage, awayTeamImage));
+                        games.add(new Game(date, homeTeam, awayTeam, score, homeTeamImage, awayTeamImage, gameStartTime, attendance, gameDuration, arenaName));
                     }
                 }
 
@@ -69,7 +81,7 @@ public class WebScraper {
         });
     }
 
-    private String getTeamCode(String teamName) {
+    public static String getTeamCode(String teamName) {
         initializeTeamCodes();
         return teamCodes.getOrDefault(teamName, "");
     }
@@ -104,6 +116,22 @@ public class WebScraper {
 
                 // Передаем результат обратно на главный поток
                 mainThreadHandler.post(() -> callback.onResult(teams));
+            } catch (Exception e) {
+                mainThreadHandler.post(() -> callback.onError("Ошибка загрузки данных: " + e.getMessage()));
+            }
+        });
+    }
+
+    public void fetchTeamStats(int year, String teamCode, TeamStatsCallback<TeamStats> callback) {
+        Log.d("TAG52", "start FETCH TEAMS");
+        executor.execute(() -> {
+            try {
+                // Используем StandingScraper для получения списка команд
+                TeamScraper teamScraper = new TeamScraper();
+                TeamStats team = teamScraper.fetchTeamDetails(teamCode, year);
+                Log.d("TAG52", team.toString());
+                // Передаем результат обратно на главный поток
+                mainThreadHandler.post(() -> callback.onResult(team));
             } catch (Exception e) {
                 mainThreadHandler.post(() -> callback.onError("Ошибка загрузки данных: " + e.getMessage()));
             }
