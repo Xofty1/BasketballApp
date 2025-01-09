@@ -64,7 +64,6 @@ public class GameFragment extends Fragment {
         } else {
             binding.tvStatus.setVisibility(View.GONE);
             binding.recyclerViewGame.setVisibility(View.VISIBLE);
-            gameRepository = new GameRepository();
             fetchGames(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH) + 1);
         }
 

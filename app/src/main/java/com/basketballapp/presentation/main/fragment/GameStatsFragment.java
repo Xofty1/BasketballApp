@@ -50,10 +50,10 @@ public class GameStatsFragment extends Fragment {
             binding.tvAwayTeam.setText(game.getAwayTeam());
             binding.tvScore.setText(game.getScore());
 
-            binding.tvGameStartTime.setText(game.getGameStartTime());
-            binding.tvAttendance.setText(game.getAttendance());
-            binding.tvGameDuration.setText(game.getGameDuration());
-            binding.tvArenaName.setText(game.getArenaName());
+            binding.tvGameStartTime.setText("Время начала игры: " + game.getGameStartTime());
+            binding.tvAttendance.setText("Посещаемость: " + game.getAttendance());
+            binding.tvGameDuration.setText("Длительность: " + game.getGameDuration());
+            binding.tvArenaName.setText("Арена: " + game.getArenaName());
 
             Glide.with(requireContext())
                     .load(game.getHomeTeamImage())

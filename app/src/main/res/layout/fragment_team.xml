@@ -16,8 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:overScrollMode="never"
-        android:padding="8dp" />
+        android:overScrollMode="never" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +31,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:background="@drawable/time_background_selected"
-            android:layout_margin="10dp"
+            android:layout_margin="6dp"
             android:text="Восток"
             android:textAllCaps="false" />
 
@@ -41,7 +40,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.4"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="6dp"
             android:textColor="@color/white"
             android:background="@drawable/time_background"
             android:text="Запад"
@@ -52,7 +51,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="2dp"
         android:stretchColumns="*">
 
         <TableRow>
@@ -63,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:text="Team"
                 android:textStyle="bold" />
 
@@ -73,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:text="Wins"
                 android:textStyle="bold" />
 
@@ -83,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:text="Losses"
                 android:textStyle="bold" />
 
@@ -93,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:text="Win/Loss Pct"
                 android:textStyle="bold" />
 
@@ -103,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:text="GB"
                 android:textStyle="bold" />
 
@@ -113,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:text="PTS/Game"
                 android:textStyle="bold" />
 
@@ -123,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:text="OPP PTS/Game"
                 android:textStyle="bold" />
 
@@ -133,13 +132,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:text="SRS"
                 android:textStyle="bold" />
         </TableRow>
     </TableLayout>
 
-    <!-- RecyclerView для строк таблицы -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

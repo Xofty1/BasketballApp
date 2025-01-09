@@ -17,7 +17,7 @@ public class TeamScraper {
             Document document = Jsoup.connect(url).get();
 
             // Парсим ключевые данные (например, Record, Coach, Arena)
-            String record = document.selectFirst("p:contains(Record)").text();
+            String record = document.selectFirst("p:contains(Record)").text().replace("Record: ", "");
             String coach = document.selectFirst("p:contains(Coach)").text().replace("Coach: ", "");
             String[] arena = document.selectFirst("p:contains(Arena)").text().replace("Arena: ", "").split("Attendance: ");
             String executive = document.selectFirst("p:contains(Executive)").text().replace("Executive: ", "");
@@ -35,24 +35,6 @@ public class TeamScraper {
             team.setPace(data[1]);
             team.setExecutive(executive);
 
-            // Парсим таблицу с расширенной статистикой
-//            Element statsTable = document.selectFirst("table[id=team_and_opponent]");
-//            if (statsTable != null) {
-//                Elements rows = statsTable.select("tbody > tr");
-//
-//                for (Element row : rows) {
-//                    String statCategory = row.select("th").text();
-//                    String value = row.select("td").text();
-//
-//                    if (statCategory.equals("PTS/G")) {
-//                        team.setPointsPerGame(value);
-//                    } else if (statCategory.equals("Opp PTS/G")) {
-//                        team.setOpponentPointsPerGame(value);
-//                    } else if (statCategory.equals("SRS")) {
-//                        team.setSrs(value);
-//                    }
-//                }
-//            }
         } catch (IOException e) {
             e.printStackTrace();
         }

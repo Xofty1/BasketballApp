@@ -76,18 +76,19 @@ public class TeamStatsFragment extends Fragment {
 
 
     private void updateUI(TeamStats teamStats) {
-        binding.tvYear.setText(year + " year");
+        binding.tvSeason.setText("Сезон: " + (year - 1) + " - " + year);
+        binding.tvTeamName.setText("Команда: " + teamName);
         Glide.with(requireContext())
                 .load(teamLogo)
                 .into(binding.ivTeamLogo);
-        binding.tvArena.setText(teamStats.getArena());
-        binding.tvCoach.setText(teamStats.getCoach());
-        binding.tvRecord.setText(teamStats.getRecord());
-        binding.tvPointsPerGame.setText(teamStats.getPointsPerGame());
-        binding.tvOpponentPointsPerGame.setText(teamStats.getOpponentPointsPerGame());
-        binding.tvSrs.setText(teamStats.getSrs());
-        binding.tvPace.setText(teamStats.getPace());
-        binding.tvExecutive.setText(teamStats.getExecutive());
-        binding.tvAttendance.setText(teamStats.getAttendance());
+        binding.tvArena.setText("Арена: " + teamStats.getArena());
+        binding.tvCoach.setText("Тренер: " + teamStats.getCoach());
+        binding.tvRecord.setText("Рекорд: " + teamStats.getRecord());
+        binding.tvPointsPerGame.setText("Забитые очки за игру: " + teamStats.getPointsPerGame());
+        binding.tvOpponentPointsPerGame.setText("Пропущенные очки за игру: " + teamStats.getOpponentPointsPerGame());
+        binding.tvSrs.setText("Рейтинг: " + teamStats.getSrs());
+        binding.tvPace.setText("Владение мячом: " + teamStats.getPace());
+        binding.tvExecutive.setText("Генеральный менеджер: " + teamStats.getExecutive());
+        binding.tvAttendance.setText("Вместимость арены: " + teamStats.getAttendance());
     }
 }

@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="text">#000000</color>
+
+    <color name="colorPrimary">#FFA000</color>
+    <color name="colorPrimaryDark">#FFA7BF</color> <!-- Оттенок для темной темы -->
+    <color name="colorAccent">#D9A1A1</color> <!-- Акцентный цвет -->
+    <color name="colorButton">#FFA420</color> <!-- Акцентный цвет -->
+    <color name="colorButtonSelected">#CD5700</color>
+
 </resources>

@@ -20,7 +20,6 @@ import com.basketballapp.presentation.adapter.TeamAdapter;
 import com.basketballapp.presentation.adapter.TimeAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -82,7 +81,10 @@ public class TeamFragment extends Fragment {
 
         // Инициализация данных
         gameRepository = new GameRepository();
-        List<Integer> years = Arrays.asList(2025, 2024, 2023, 2022, 2021, 2020);
+        List<Integer> years = new ArrayList<>();
+        for (int i = 2025; i > 2015; i--) {
+            years.add(i);
+        }
         fetchTeams(selectedYear);
 
         // Адаптер для списка годов
