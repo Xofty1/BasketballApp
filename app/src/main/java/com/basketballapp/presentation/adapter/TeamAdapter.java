@@ -16,9 +16,11 @@ import java.util.List;
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder> {
 
     private final List<Team> teamList;
+    private final boolean isPortrait;
 
-    public TeamAdapter(List<Team> teamList) {
+    public TeamAdapter(List<Team> teamList, boolean isPortrait) {
         this.teamList = teamList;
+        this.isPortrait = isPortrait;
     }
 
     @NonNull
@@ -36,11 +38,24 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         holder.teamName.setText(team.getName());
         holder.teamWins.setText(team.getWins());
         holder.teamLosses.setText(team.getLosses());
-        holder.teamWinLossPct.setText(team.getWinLossPct());
-        holder.teamGb.setText(team.getGb());
         holder.teamPtsPerGame.setText(team.getPtsPerGame());
-        holder.teamOppPtsPerGame.setText(team.getOppPtsPerGame());
         holder.teamSrs.setText(team.getSrs());
+
+        if (!isPortrait) {
+            // Если ориентация горизонтальная, показываем дополнительные поля
+            holder.teamWinLossPct.setVisibility(View.VISIBLE);
+            holder.teamGb.setVisibility(View.VISIBLE);
+            holder.teamOppPtsPerGame.setVisibility(View.VISIBLE);
+
+            holder.teamWinLossPct.setText(team.getWinLossPct());
+            holder.teamGb.setText(team.getGb());
+            holder.teamOppPtsPerGame.setText(team.getOppPtsPerGame());
+        } else {
+            // Если ориентация вертикальная, скрываем эти поля
+            holder.teamWinLossPct.setVisibility(View.GONE);
+            holder.teamGb.setVisibility(View.GONE);
+            holder.teamOppPtsPerGame.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -64,3 +79,4 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         }
     }
 }
+

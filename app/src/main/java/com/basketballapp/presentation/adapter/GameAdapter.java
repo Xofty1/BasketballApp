@@ -37,7 +37,8 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         Game game = gameList.get(position);
 
         holder.tvDate.setText(game.getDate());
-        holder.tvTeams.setText(game.getHomeTeam() + " vs " + game.getAwayTeam());
+        holder.tvHomeTeam.setText(game.getHomeTeam());
+        holder.tvAwayTeam.setText(game.getAwayTeam());
         holder.tvScore.setText(game.getScore());
         Log.d("TAG52", game.getHomeTeamImage());
         // Загрузка изображений логотипов команд
@@ -56,14 +57,15 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     }
 
     public static class GameViewHolder extends RecyclerView.ViewHolder {
-        TextView tvDate, tvTeams, tvScore;
+        TextView tvDate, tvHomeTeam, tvScore, tvAwayTeam;
         ImageView ivHomeTeamLogo, ivAwayTeamLogo;
 
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvDate = itemView.findViewById(R.id.tvDate);
-            tvTeams = itemView.findViewById(R.id.tvTeams);
+            tvHomeTeam = itemView.findViewById(R.id.tvHomeTeam);
+            tvAwayTeam = itemView.findViewById(R.id.tvAwayTeam);
             tvScore = itemView.findViewById(R.id.tvScore);
             ivHomeTeamLogo = itemView.findViewById(R.id.ivHomeTeamLogo);
             ivAwayTeamLogo = itemView.findViewById(R.id.ivAwayTeamLogo);

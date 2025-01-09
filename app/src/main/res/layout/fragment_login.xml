@@ -3,7 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="16dp">
+
+    <TextView
+        android:id="@+id/fragmentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextStyleHeadline"
+        android:text="Вход" />
 
     <EditText
         android:id="@+id/loginEmail"
@@ -28,7 +36,8 @@
         android:id="@+id/registerLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Нет аккаунта? Зарегистрируйтесь" />
+        android:text="Нет аккаунта? Зарегистрируйтесь"
+        android:layout_margin="5dp" />
 
     <TextView
         android:id="@+id/guestLink"

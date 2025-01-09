@@ -1,5 +1,6 @@
 package com.basketballapp.presentation.main.fragment;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.basketballapp.R;
 import com.basketballapp.databinding.FragmentTeamBinding;
 import com.basketballapp.domain.model.Team;
 import com.basketballapp.domain.repository.GameRepository;
@@ -19,6 +21,7 @@ import com.basketballapp.presentation.adapter.TimeAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class TeamFragment extends Fragment {
@@ -26,12 +29,14 @@ public class TeamFragment extends Fragment {
     private GameRepository gameRepository;
     private TeamAdapter adapter;
     private FragmentTeamBinding binding;
-    String TAG = "TAG52";
+    private boolean isE = true;
+    private int selectedYear; // Текущий выбранный год
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         gameRepository = new GameRepository();
+        selectedYear = Calendar.getInstance().get(Calendar.YEAR); // Устанавливаем текущий год по умолчанию
     }
 
     @Nullable
@@ -40,14 +45,51 @@ public class TeamFragment extends Fragment {
         binding = FragmentTeamBinding.inflate(inflater);
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter = new TeamAdapter(teamList);
+
+        // Определяем текущую ориентацию
+        boolean isPortrait = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+
+        // Передаём ориентацию в адаптер
+        adapter = new TeamAdapter(teamList, isPortrait);
         binding.recyclerView.setAdapter(adapter);
 
-        gameRepository = new GameRepository();
-        List<Integer> years = Arrays.asList(2020, 2021, 2022, 2023, 2024);
+        // Устанавливаем видимость полей в зависимости от ориентации
+        if (!isPortrait) {
+            binding.teamWinLossPct.setVisibility(View.VISIBLE);
+            binding.teamGb.setVisibility(View.VISIBLE);
+            binding.teamOppPtsPerGame.setVisibility(View.VISIBLE);
+        } else {
+            binding.teamWinLossPct.setVisibility(View.GONE);
+            binding.teamGb.setVisibility(View.GONE);
+            binding.teamOppPtsPerGame.setVisibility(View.GONE);
+        }
 
-        // Устанавливаем адаптер для списка годов
-        TimeAdapter yearAdapter = new TimeAdapter(years, this::fetchTeams);
+        // Обработчики кнопок конференций
+        binding.standingE.setOnClickListener(v -> {
+            isE = true; // Устанавливаем текущую конференцию
+            updateButtonStates(); // Обновляем фоны кнопок
+            fetchTeams(selectedYear); // Загружаем данные
+        });
+
+        binding.standingW.setOnClickListener(v -> {
+            isE = false; // Устанавливаем текущую конференцию
+            updateButtonStates(); // Обновляем фоны кнопок
+            fetchTeams(selectedYear); // Загружаем данные
+        });
+
+// Метод для обновления состояния кнопок
+
+
+        // Инициализация данных
+        gameRepository = new GameRepository();
+        List<Integer> years = Arrays.asList(2025, 2024, 2023, 2022, 2021, 2020);
+        fetchTeams(selectedYear);
+
+        // Адаптер для списка годов
+        TimeAdapter yearAdapter = new TimeAdapter(years, year -> {
+            selectedYear = year; // Обновляем выбранный год
+            fetchTeams(selectedYear); // Загружаем данные для нового года
+        });
         binding.yearsRecyclerView.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         );
@@ -56,9 +98,8 @@ public class TeamFragment extends Fragment {
         return binding.getRoot();
     }
 
-
     private void fetchTeams(int year) {
-        gameRepository.fetchTeams(year, new RepositoryCallback<>() {
+        gameRepository.fetchTeams(year, isE, new RepositoryCallback<>() {
             @Override
             public void onSuccess(List<Team> games) {
                 teamList.clear();
@@ -72,4 +113,15 @@ public class TeamFragment extends Fragment {
             }
         });
     }
+
+    private void updateButtonStates() {
+        if (isE) {
+            binding.standingE.setBackgroundResource(R.drawable.time_background_selected);
+            binding.standingW.setBackgroundResource(R.drawable.time_background);
+        } else {
+            binding.standingE.setBackgroundResource(R.drawable.time_background);
+            binding.standingW.setBackgroundResource(R.drawable.time_background_selected);
+        }
+    }
 }
+

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class StandingScraper {
 
-    public List<Team> fetchTeams(int year) {
+    public List<Team> fetchTeams(int year, boolean isE) {
         List<Team> teams = new ArrayList<>();
 
         try {
@@ -23,8 +23,11 @@ public class StandingScraper {
             Document document = Jsoup.connect(url).get();
             Log.d("TAG53", "start");
             // Селектор для таблиц конференций
-            Elements tables = document.select("table[id=confs_standings_E]");
-
+            Elements tables;
+            if (isE)
+                tables = document.select("table[id=confs_standings_E]");
+            else
+                tables = document.select("table[id=confs_standings_W]");
             for (Element table : tables) {
                 Log.d("TAG53", "element found");
                 Elements rows = table.select("tbody > tr");

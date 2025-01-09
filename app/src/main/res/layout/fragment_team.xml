@@ -4,93 +4,138 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/fragmentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextStyleHeadline"
+        android:text="Конференции лиги" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/yearsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
-        android:overScrollMode="never" />
+        android:overScrollMode="never"
+        android:padding="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/standingE"
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@drawable/time_background_selected"
+            android:layout_margin="10dp"
+            android:text="Восток"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/standingW"
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/time_background"
+            android:text="Запад"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="*"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:stretchColumns="*">
 
         <TableRow>
 
             <TextView
+                android:id="@+id/teamName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp"
                 android:text="Team"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:padding="4dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/teamWins"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp"
                 android:text="Wins"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:padding="4dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/teamLosses"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp"
                 android:text="Losses"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:padding="4dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/teamWinLossPct"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp"
                 android:text="Win/Loss Pct"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:padding="4dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/teamGb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp"
                 android:text="GB"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:padding="4dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/teamPtsPerGame"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp"
                 android:text="PTS/Game"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:padding="4dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/teamOppPtsPerGame"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp"
                 android:text="OPP PTS/Game"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:padding="4dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/teamSrs"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="SRS"
-                android:textStyle="bold"
                 android:gravity="center"
-                android:padding="4dp" />
+                android:padding="4dp"
+                android:text="SRS"
+                android:textStyle="bold" />
         </TableRow>
     </TableLayout>
 

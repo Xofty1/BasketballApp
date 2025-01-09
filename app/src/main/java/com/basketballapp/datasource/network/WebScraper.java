@@ -94,13 +94,13 @@ public class WebScraper {
         return months[month - 1];
     }
 
-    public void fetchTeams(int year, WebScraperCallback<Team> callback) {
+    public void fetchTeams(int year, boolean isE, WebScraperCallback<Team> callback) {
         Log.d("TAG52", "start FETCH TEAMS");
         executor.execute(() -> {
             try {
                 // Используем StandingScraper для получения списка команд
                 StandingScraper standingScraper = new StandingScraper();
-                List<Team> teams = standingScraper.fetchTeams(year);
+                List<Team> teams = standingScraper.fetchTeams(year, isE);
 
                 // Передаем результат обратно на главный поток
                 mainThreadHandler.post(() -> callback.onResult(teams));
