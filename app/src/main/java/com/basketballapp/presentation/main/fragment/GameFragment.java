@@ -83,7 +83,6 @@ public class GameFragment extends Fragment {
         }
         ArrayAdapter<String> yearAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, years);
         binding.spinnerYear.setAdapter(yearAdapter);
-
         // Настройка Spinner для месяца
         String[] months = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
         ArrayAdapter<String> monthAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, months);
@@ -125,6 +124,8 @@ public class GameFragment extends Fragment {
         gameRepository.fetchGames(year, month, new RepositoryCallback<>() {
             @Override
             public void onSuccess(List<Game> games) {
+
+
                 // Фильтруем игры по году и месяцу
                 gameList.clear();
                 gameList.addAll(games);

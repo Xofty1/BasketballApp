@@ -57,7 +57,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
             GameStatsFragment gameStatsFragment = GameStatsFragment.newInstance(game);
 
             fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, gameStatsFragment) // R.id.fragment_container — это контейнер в activity
+                    .replace(R.id.fragmentContainer, gameStatsFragment)
                     .addToBackStack(null)
                     .commit();
         });

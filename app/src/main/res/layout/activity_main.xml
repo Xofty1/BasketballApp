@@ -22,13 +22,14 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         app:menu="@menu/bottom_navigation"
-        android:background="#FFCC99"
         app:itemRippleColor="@color/white"
         android:layout_gravity="bottom"
+        android:background="@drawable/bottom_nav_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:itemActiveIndicatorStyle="@color/white"
+        app:circularflow_defaultRadius="10dp"
         app:itemIconTint="@color/nav_item_text_color"
         app:itemTextColor="@color/nav_item_text_color" />
 

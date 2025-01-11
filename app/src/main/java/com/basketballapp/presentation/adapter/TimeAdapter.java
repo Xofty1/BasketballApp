@@ -16,7 +16,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
     private final List<Integer> years;
     private final OnYearClickListener listener;
-    private int selectedYear = -1;
+    private int selectedYear = 2025;
 
     public interface OnYearClickListener {
         void onYearClick(int year);
@@ -41,7 +41,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
         // Выделение выбранного года
         if (year == selectedYear) {
-            holder.yearText.setBackgroundResource(R.drawable.time_background_selected); // Создайте файл `year_background_selected.xml`
+            holder.yearText.setBackgroundResource(R.drawable.time_background_selected);
         } else {
             holder.yearText.setBackgroundResource(R.drawable.time_background);
         }

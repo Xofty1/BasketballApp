@@ -26,19 +26,22 @@
         android:layout_height="wrap_content"
         android:text="Выйти"
         android:visibility="gone"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btn_about_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="О приложении"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btn_about_creator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Об авторе"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:textColor="@color/white" />
 </LinearLayout>

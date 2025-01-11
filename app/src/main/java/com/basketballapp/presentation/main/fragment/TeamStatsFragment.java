@@ -81,14 +81,22 @@ public class TeamStatsFragment extends Fragment {
         Glide.with(requireContext())
                 .load(teamLogo)
                 .into(binding.ivTeamLogo);
-        binding.tvArena.setText("Арена: " + teamStats.getArena());
-        binding.tvCoach.setText("Тренер: " + teamStats.getCoach());
-        binding.tvRecord.setText("Рекорд: " + teamStats.getRecord());
-        binding.tvPointsPerGame.setText("Забитые очки за игру: " + teamStats.getPointsPerGame());
-        binding.tvOpponentPointsPerGame.setText("Пропущенные очки за игру: " + teamStats.getOpponentPointsPerGame());
-        binding.tvSrs.setText("Рейтинг: " + teamStats.getSrs());
-        binding.tvPace.setText("Владение мячом: " + teamStats.getPace());
-        binding.tvExecutive.setText("Генеральный менеджер: " + teamStats.getExecutive());
-        binding.tvAttendance.setText("Вместимость арены: " + teamStats.getAttendance());
+        binding.tvRecord.setText(getReadyData("Рекорд: ", teamStats.getRecord()));
+        binding.tvRecord.setText(getReadyData("Рекорд: ", teamStats.getRecord()));
+        binding.tvCoach.setText(getReadyData("Тренер: ", teamStats.getCoach()));
+        binding.tvExecutive.setText(getReadyData("Генеральный менеджер: ", teamStats.getExecutive()));
+        binding.tvArena.setText(getReadyData("Арена: ", teamStats.getArena()));
+        binding.tvAttendance.setText(getReadyData("Вместимость арены: ", teamStats.getAttendance()));
+        binding.tvPointsPerGame.setText(getReadyData("Забитые очки за игру: ", teamStats.getPointsPerGame()));
+        binding.tvOpponentPointsPerGame.setText(getReadyData("Пропущенные очки за игру: ", teamStats.getOpponentPointsPerGame()));
+        binding.tvSrs.setText(getReadyData("Рейтинг: ", teamStats.getSrs()));
+        binding.tvPace.setText(getReadyData("Владение мячом: ", teamStats.getPace()));
+    }
+
+
+    private String getReadyData(String dataType, String data) {
+        if (data == null) return dataType + "Нет данных";
+        return dataType + data;
+
     }
 }
