@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment {
                 getActivity().finish();
             });
         } else {
-            binding.tvUsername.setText("Not logged in");
+            binding.tvUsername.setText("Пользователь не зарегистрирован");
             binding.btnLogout.setVisibility(View.GONE);
         }
         binding.btnAboutApp.setOnClickListener(v -> {

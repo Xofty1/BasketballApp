@@ -45,6 +45,7 @@
             <ImageView
                 android:id="@+id/ivHomeTeamLogo"
                 android:layout_width="48dp"
+                android:background="@drawable/rounded_imageview_background"
                 android:layout_height="48dp" />
 
             <TextView
@@ -63,6 +64,7 @@
             <ImageView
                 android:id="@+id/ivAwayTeamLogo"
                 android:layout_width="48dp"
+                android:background="@drawable/rounded_imageview_background"
                 android:layout_height="48dp" />
 
             <TextView

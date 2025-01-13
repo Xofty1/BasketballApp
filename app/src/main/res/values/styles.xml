@@ -10,5 +10,18 @@
         <item name="android:textColor">@color/text</item>
     </style>
 
+    <style name="EditTextStyle" parent="Widget.Material3.TextInputEditText.FilledBox">
+        <!-- Основные цвета -->
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:hint">@color/colorAccent</item>
+
+        <!-- Отступы и шрифт -->
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+
+        <!-- Оформление границ -->
+        <item name="android:background">@drawable/rounded_edittext_background</item>
+    </style>
 
 </resources>

@@ -20,11 +20,13 @@
         android:background="@drawable/time_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:layout_margin="8dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/about_app" />
+        android:text="@string/about_app"
+        android:layout_margin="8dp" />
 
 </LinearLayout>

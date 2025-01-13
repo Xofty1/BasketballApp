@@ -31,6 +31,7 @@
                 android:id="@+id/ivHomeTeamLogo"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
+                android:background="@drawable/rounded_imageview_background"
                 android:layout_gravity="center" />
 
             <TextView
@@ -65,6 +66,7 @@
                 android:id="@+id/ivAwayTeamLogo"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
+                android:background="@drawable/rounded_imageview_background"
                 android:layout_gravity="center" />
 
             <TextView

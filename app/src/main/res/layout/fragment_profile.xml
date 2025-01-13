@@ -20,14 +20,6 @@
         android:layout_gravity="center_horizontal"
         android:padding="8dp" />
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Выйти"
-        android:visibility="gone"
-        android:padding="16dp"
-        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btn_about_app"
@@ -42,6 +34,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Об авторе"
+        android:padding="16dp"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выйти"
+        android:visibility="gone"
         android:padding="16dp"
         android:textColor="@color/white" />
 </LinearLayout>
