@@ -2,6 +2,7 @@ package com.basketballapp.presentation.main;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -12,7 +13,7 @@ import com.basketballapp.presentation.main.fragment.ProfileFragment;
 import com.basketballapp.presentation.main.fragment.TeamFragment;
 
 public class MainActivity extends AppCompatActivity {
-    Fragment selectedFragment = new TeamFragment();
+    Fragment selectedFragment;
     ActivityMainBinding binding;
 
     @Override
@@ -21,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        // Инициализация начального фрагмента
+        if (savedInstanceState != null) {
+            selectedFragment = getSupportFragmentManager().getFragment(savedInstanceState, "selectedFragment");
+        } else {
+            selectedFragment = new TeamFragment();
+        }
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainer, selectedFragment)
                 .commit();
@@ -66,5 +70,14 @@ public class MainActivity extends AppCompatActivity {
                 binding.bottomNavigationView.setSelectedItemId(R.id.nav_profile);
             } else binding.bottomNavigationView.setSelectedItemId(-1);
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if (selectedFragment != null) {
+            getSupportFragmentManager().putFragment(outState, "selectedFragment", selectedFragment);
+        }
     }
 }
