@@ -55,10 +55,11 @@ dependencies {
     implementation(libs.jsoup)
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
-    //noinspection UseTomlInstead
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.dimezis.blurview)
+
+    implementation(libs.core.ktx)
 
 
 }

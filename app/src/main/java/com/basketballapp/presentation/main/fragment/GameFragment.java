@@ -32,7 +32,6 @@ public class GameFragment extends Fragment {
     private GameRepository gameRepository;
     private GameAdapter adapter;
     private FragmentGameBinding binding;
-    String TAG = "TAG52";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

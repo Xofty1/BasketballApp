@@ -22,11 +22,21 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         if (savedInstanceState != null) {
+            // Восстанавливаем выбранный фрагмент
             selectedFragment = getSupportFragmentManager().getFragment(savedInstanceState, "selectedFragment");
         } else {
+            // По умолчанию устанавливаем TeamFragment
             selectedFragment = new TeamFragment();
         }
+
+        // Восстанавливаем фрагменты из бэкстека
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            // Если есть фрагменты в бэкстеке, восстанавливаем последний
+            selectedFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+        }
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainer, selectedFragment)
                 .commit();
@@ -68,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 binding.bottomNavigationView.setSelectedItemId(R.id.nav_teams);
             } else if (currentFragment instanceof ProfileFragment) {
                 binding.bottomNavigationView.setSelectedItemId(R.id.nav_profile);
-            } else binding.bottomNavigationView.setSelectedItemId(-1);
+            } else {
+                binding.bottomNavigationView.setSelectedItemId(-1);
+            }
         });
     }
 
@@ -76,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        if (selectedFragment != null) {
-            getSupportFragmentManager().putFragment(outState, "selectedFragment", selectedFragment);
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+        if (currentFragment != null) {
+            getSupportFragmentManager().putFragment(outState, "selectedFragment", currentFragment);
         }
     }
 }

@@ -1,7 +1,5 @@
 package com.basketballapp.domain.model;
 
-// Класс для представления команды
-
 public class TeamStats {
     private String record;
     private String coach;

@@ -1,111 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/tvSeason"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextStyleHeadline"
-        android:text="Year"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvTeamName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextStyleHeadline"
-        android:text="Year"
-        android:textSize="16sp" />
+        <!-- Сезон -->
+        <TextView
+            android:id="@+id/tvSeason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextStyleHeadline"
+            android:text="Year"
+            android:textSize="16sp" />
 
+        <!-- Название команды -->
+        <TextView
+            android:id="@+id/tvTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextStyleHeadline"
+            android:text="Name"
+            android:textSize="16sp" />
 
-    <ImageView
-        android:id="@+id/ivTeamLogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_imageview_background"
-        android:layout_marginVertical="8dp" />
+        <!-- Логотип команды -->
+        <ImageView
+            android:id="@+id/ivTeamLogo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_imageview_background"
+            android:layout_marginVertical="8dp" />
 
-    <TextView
-        android:id="@+id/tvRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:text="Home Team"
-        android:textSize="16sp" />
+        <!-- Рекорд команды -->
+        <TextView
+            android:id="@+id/tvRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Record"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvCoach"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:gravity="center"
-        android:textSize="16sp" />
+        <!-- Тренер -->
+        <TextView
+            android:id="@+id/tvCoach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:gravity="center"
+            android:text="Coach"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvExecutive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:gravity="center"
-        android:text="Score"
-        android:textSize="16sp" />
+        <!-- Руководитель -->
+        <TextView
+            android:id="@+id/tvExecutive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:gravity="center"
+            android:text="Executive"
+            android:textSize="16sp" />
 
+        <!-- Арена -->
+        <TextView
+            android:id="@+id/tvArena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Arena"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvArena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:text="Away Team"
-        android:textSize="16sp" />
+        <!-- Посещаемость -->
+        <TextView
+            android:id="@+id/tvAttendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Attendance"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvAttendance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:text="Away Team"
-        android:textSize="16sp" />
+        <!-- Очки за игру -->
+        <TextView
+            android:id="@+id/tvPointsPerGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:gravity="center"
+            android:text="PointsPerGame"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvPointsPerGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:gravity="center"
-        android:text="Score"
-        android:textSize="16sp" />
+        <!-- Очки соперника за игру -->
+        <TextView
+            android:id="@+id/tvOpponentPointsPerGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:gravity="center"
+            android:text="OpponentPointsPerGame"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvOpponentPointsPerGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:gravity="center"
-        android:text="Score"
-        android:textSize="16sp" />
+        <!-- SRS (Simple Rating System) -->
+        <TextView
+            android:id="@+id/tvSrs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:gravity="center"
+            android:text="Srs"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvSrs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:gravity="center"
-        android:text="Score"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/tvPace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:gravity="center"
-        android:text="Score"
-        android:textSize="16sp" />
-
-</LinearLayout>
+        <!-- Темп игры -->
+        <TextView
+            android:id="@+id/tvPace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:gravity="center"
+            android:text="Pace"
+            android:textSize="16sp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
